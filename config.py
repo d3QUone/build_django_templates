@@ -19,6 +19,7 @@ SOURCE_DIRS = [
 ]
 
 # results will be saved here
+# !!! this folder must exist !!!
 TARGET_DIR = "example/templates/" 
 
 
