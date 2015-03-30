@@ -6,6 +6,7 @@
 # Run the 'build.py' script after doing "python manage.py collectstatic" 
 #
 
+
 # Django's standart folder-style
 SOURCE_DIRS = [
 	"example/core/templates/core/",
@@ -16,6 +17,7 @@ SOURCE_DIRS = [
 TARGET_DIR = "example/templates/" 
 
 
+# all files that have [[[ "file_name.html" ]]] - include tag OR must be in target dir 
 TARGET_FILES = [
 	"base.html",
 	"core__index.html",
