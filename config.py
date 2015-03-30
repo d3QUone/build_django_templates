@@ -20,4 +20,26 @@ TARGET_FILES = [
 	"base.html",
 	"core__index.html",
 	"core__question_page.html",
+	"user_profile__base.html"
 ]
+
+
+
+"""
+Output in this example:
+
+$ python build.py
+
+Found "navbar.html"
+Found "navbar.html"
+File "example/templates/base.html" complete with 2 insertions
+--------------------------------------------------------------------------------
+File "example/templates/core__index.html" complete with 0 insertions
+--------------------------------------------------------------------------------
+File "example/templates/core__question_page.html" complete with 0 insertions
+--------------------------------------------------------------------------------
+Found "user_profile login.html"
+Found "login form validation.js"
+File "example/templates/user_profile__base.html" complete with 2 insertions
+--------------------------------------------------------------------------------
+"""

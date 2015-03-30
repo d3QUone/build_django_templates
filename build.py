@@ -10,7 +10,9 @@ import sys
 # just put filename in tag insted of your include. This file will be searching in the same 
 # folder with current "Target-File", example: 
 # 
-# [[[ "question__block.html" ]]]
+# Good: [[[ "question__block.html" ]]]
+#
+#  Bad: [[[ " question__block.html  "]]] 
 #
 
 def parse_base_file(folder, filename):
@@ -40,11 +42,6 @@ def parse_base_file(folder, filename):
 				# insert what left!!!
 				f.write(copy)
 				f.close()
-
-				# if ins == 0:
-				# 	print "No updates"
-				# 	remove(TARGET_DIR + filename)
-
 				break  # will be the last cycle 
 
 			buf = copy[:left_t]
@@ -55,13 +52,15 @@ def parse_base_file(folder, filename):
 
 			right_t = copy.find("]]]")
 
-			include = copy[:right_t].replace('"', '').replace(' ', '')
-
-			copy = copy[right_t + 3:]
-
-			print 'Found "{0}"'.format(include)
+			# parse filename properly:
+			buf = copy[:right_t]
+			i = buf.find('"')
+			buf = buf[i+1:]
+			i = buf.find('"')
+			include = buf[:i]
 
 			# open include, add content....
+			print 'Found "{0}"'.format(include)
 			try:
 				include_file = open(folder + include, "r")
 				include_content = include_file.read()
@@ -75,6 +74,7 @@ def parse_base_file(folder, filename):
 				remove(TARGET_DIR + filename)
 				break
 
+			copy = copy[right_t + 3:]
 			ins += 1
 
 	except Exception as e:
@@ -82,6 +82,7 @@ def parse_base_file(folder, filename):
 
 
 if __name__ == "__main__":
+	print "--"*40
 	for targ_file in TARGET_FILES:
 		for folder in SOURCE_DIRS:
 			all_files = listdir(folder)
